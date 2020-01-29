@@ -3,8 +3,8 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>query_types</RootNamespace>
         <LangVersion>default</LangVersion>
+        <RootNamespace>keylessentitytypes</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
