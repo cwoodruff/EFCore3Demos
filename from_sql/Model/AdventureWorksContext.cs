@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace from_sql.Model
 {
@@ -9,8 +10,16 @@ namespace from_sql.Model
             optionsBuilder
                 .UseSqlServer(
                     "data source=.;initial catalog=AdventureWorks2014;integrated security=True;MultipleActiveResultSets=True;")
-                .UseLazyLoadingProxies();
+                .UseLazyLoadingProxies()
+                .UseLoggerFactory(loggerFactory);
         }
+        
+        static  readonly ILoggerFactory loggerFactory = LoggerFactory.Create (builder =>
+        {
+            builder
+                .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information)
+                .AddConsole();
+        });
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
