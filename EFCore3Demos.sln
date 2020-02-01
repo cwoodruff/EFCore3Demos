@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keyless-entity-types", "key
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spatial", "spatial\spatial.csproj", "{98606DFF-2A54-4BB1-A4D2-CF19908E981A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "from_sql", "from_sql\from_sql.csproj", "{D59D6C90-FFE1-4054-91C1-3B1CC5B7F8FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +68,9 @@ Global
 		{98606DFF-2A54-4BB1-A4D2-CF19908E981A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98606DFF-2A54-4BB1-A4D2-CF19908E981A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98606DFF-2A54-4BB1-A4D2-CF19908E981A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D59D6C90-FFE1-4054-91C1-3B1CC5B7F8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59D6C90-FFE1-4054-91C1-3B1CC5B7F8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59D6C90-FFE1-4054-91C1-3B1CC5B7F8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59D6C90-FFE1-4054-91C1-3B1CC5B7F8FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
