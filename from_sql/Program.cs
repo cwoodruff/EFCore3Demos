@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Data;
 using from_sql.Model;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace from_sql
@@ -11,11 +13,17 @@ namespace from_sql
             using var db = new AdventureWorksContext();
 
             var searchLastName = "Smith";
+            
+            string description = "Smith";
+            SqlParameter parameter = new SqlParameter("LastName", SqlDbType.NVarChar);
+            parameter.Direction = ParameterDirection.InputOutput;
+            parameter.Size = description.Length;
+            parameter.Value = description;
 
             var people =
                 db.Person.FromSqlInterpolated(
                     //$"SELECT [BusinessEntityID],[PersonType],[NameStyle],[Title],[FirstName],[MiddleName],[LastName],[Suffix],[EmailPromotion],[AdditionalContactInfo],[Demographics],[rowguid],[ModifiedDate] FROM [Person].[Person] WHERE LastName = {searchLastName}");
-                    $"SELECT * FROM [Person].[Person] WHERE LastName = {searchLastName}");
+                    $"SELECT * FROM [Person].[Person] WHERE LastName = {parameter}");
             
             foreach (var person in people)
             {
