@@ -12,8 +12,6 @@ namespace from_sql
         {
             using var db = new AdventureWorksContext();
 
-            var searchLastName = "Smith";
-            
             string description = "Smith";
             SqlParameter parameter = new SqlParameter("LastName", SqlDbType.NVarChar);
             parameter.Direction = ParameterDirection.InputOutput;
