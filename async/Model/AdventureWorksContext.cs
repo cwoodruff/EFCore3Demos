@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace from_sql.Model
+namespace async.Model
 {
     public class AdventureWorksContext : DbContext
     {

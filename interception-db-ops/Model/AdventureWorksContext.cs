@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using interception_db_ops.Interceptors;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace from_sql.Model
+namespace interception_db_ops.Model
 {
     public class AdventureWorksContext : DbContext
     {
@@ -10,8 +11,9 @@ namespace from_sql.Model
             optionsBuilder
                 .UseSqlServer(
                     "data source=DESKTOP-J4QCSDR;initial catalog=AdventureWorks2014;integrated security=True;MultipleActiveResultSets=True;")
-                .UseLazyLoadingProxies()
-                .UseLoggerFactory(loggerFactory);
+                //.UseLazyLoadingProxies()
+                .UseLoggerFactory(loggerFactory)
+                .AddInterceptors(new HintCommandInterceptor());
         }
         
         static  readonly ILoggerFactory loggerFactory = LoggerFactory.Create (builder =>
