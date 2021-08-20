@@ -38,12 +38,12 @@ namespace Demos
     public class Startup
     {
         private const string ConnectionString
-            = @"Server=(localdb)\mssqllocaldb;Database=Demo.ContextPooling;Integrated Security=True;ConnectRetryCount=0";
+            = @"Server=(localdb)\mssqllocaldb;Database=Demo.DBContextPooling;Integrated Security=True;ConnectRetryCount=0";
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContextPool<BloggingContext>(c => c.UseSqlServer(ConnectionString));
-            services.AddDbContext<BloggingContext>(c => c.UseSqlServer(ConnectionString));
+            services.AddDbContextPool<BloggingContext>(c => c.UseSqlServer(ConnectionString));
+            //services.AddDbContext<BloggingContext>(c => c.UseSqlServer(ConnectionString));
         }
     }
 

@@ -55,14 +55,14 @@ namespace query_tags.Model
                     entity.ToTable("Address", "Person");
 
                     entity.HasIndex(e => e.StateProvinceID)
-                        .HasName("IX_Address_StateProvinceID");
+                        .HasDatabaseName("IX_Address_StateProvinceID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Address_rowguid")
+                        .HasDatabaseName("AK_Address_rowguid")
                         .IsUnique();
 
                     entity.HasIndex(e => new {e.AddressLine1, e.AddressLine2, e.City, e.StateProvinceID, e.PostalCode})
-                        .HasName("IX_Address_AddressLine1_AddressLine2_City_StateProvinceID_PostalCode")
+                        .HasDatabaseName("IX_Address_AddressLine1_AddressLine2_City_StateProvinceID_PostalCode")
                         .IsUnique();
 
                     entity.Property(e => e.AddressLine1)
@@ -99,11 +99,11 @@ namespace query_tags.Model
                     entity.ToTable("AddressType", "Person");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_AddressType_Name")
+                        .HasDatabaseName("AK_AddressType_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_AddressType_rowguid")
+                        .HasDatabaseName("AK_AddressType_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -123,10 +123,10 @@ namespace query_tags.Model
                     entity.ToTable("BillOfMaterials", "Production");
 
                     entity.HasIndex(e => e.UnitMeasureCode)
-                        .HasName("IX_BillOfMaterials_UnitMeasureCode");
+                        .HasDatabaseName("IX_BillOfMaterials_UnitMeasureCode");
 
                     entity.HasIndex(e => new {e.ProductAssemblyID, e.ComponentID, e.StartDate})
-                        .HasName("AK_BillOfMaterials_ProductAssemblyID_ComponentID_StartDate")
+                        .HasDatabaseName("AK_BillOfMaterials_ProductAssemblyID_ComponentID_StartDate")
                         .IsUnique();
 
                     entity.Property(e => e.EndDate).HasColumnType("datetime");
@@ -171,7 +171,7 @@ namespace query_tags.Model
                     entity.ToTable("BusinessEntity", "Person");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_BusinessEntity_rowguid")
+                        .HasDatabaseName("AK_BusinessEntity_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -190,13 +190,13 @@ namespace query_tags.Model
                     entity.ToTable("BusinessEntityAddress", "Person");
 
                     entity.HasIndex(e => e.AddressID)
-                        .HasName("IX_BusinessEntityAddress_AddressID");
+                        .HasDatabaseName("IX_BusinessEntityAddress_AddressID");
 
                     entity.HasIndex(e => e.AddressTypeID)
-                        .HasName("IX_BusinessEntityAddress_AddressTypeID");
+                        .HasDatabaseName("IX_BusinessEntityAddress_AddressTypeID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_BusinessEntityAddress_rowguid")
+                        .HasDatabaseName("AK_BusinessEntityAddress_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -230,13 +230,13 @@ namespace query_tags.Model
                     entity.ToTable("BusinessEntityContact", "Person");
 
                     entity.HasIndex(e => e.ContactTypeID)
-                        .HasName("IX_BusinessEntityContact_ContactTypeID");
+                        .HasDatabaseName("IX_BusinessEntityContact_ContactTypeID");
 
                     entity.HasIndex(e => e.PersonID)
-                        .HasName("IX_BusinessEntityContact_PersonID");
+                        .HasDatabaseName("IX_BusinessEntityContact_PersonID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_BusinessEntityContact_rowguid")
+                        .HasDatabaseName("AK_BusinessEntityContact_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -267,7 +267,7 @@ namespace query_tags.Model
                     entity.ToTable("ContactType", "Person");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ContactType_Name")
+                        .HasDatabaseName("AK_ContactType_Name")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -288,7 +288,7 @@ namespace query_tags.Model
                     entity.ToTable("CountryRegion", "Person");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_CountryRegion_Name")
+                        .HasDatabaseName("AK_CountryRegion_Name")
                         .IsUnique();
 
                     entity.Property(e => e.CountryRegionCode).HasMaxLength(3);
@@ -311,7 +311,7 @@ namespace query_tags.Model
                     entity.ToTable("CountryRegionCurrency", "Sales");
 
                     entity.HasIndex(e => e.CurrencyCode)
-                        .HasName("IX_CountryRegionCurrency_CurrencyCode");
+                        .HasDatabaseName("IX_CountryRegionCurrency_CurrencyCode");
 
                     entity.Property(e => e.CountryRegionCode).HasMaxLength(3);
 
@@ -338,7 +338,7 @@ namespace query_tags.Model
                     entity.ToTable("CreditCard", "Sales");
 
                     entity.HasIndex(e => e.CardNumber)
-                        .HasName("AK_CreditCard_CardNumber")
+                        .HasDatabaseName("AK_CreditCard_CardNumber")
                         .IsUnique();
 
                     entity.Property(e => e.CardNumber)
@@ -360,7 +360,7 @@ namespace query_tags.Model
                     entity.ToTable("Culture", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Culture_Name")
+                        .HasDatabaseName("AK_Culture_Name")
                         .IsUnique();
 
                     entity.Property(e => e.CultureID).HasColumnType("nchar(6)");
@@ -383,7 +383,7 @@ namespace query_tags.Model
                     entity.ToTable("Currency", "Sales");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Currency_Name")
+                        .HasDatabaseName("AK_Currency_Name")
                         .IsUnique();
 
                     entity.Property(e => e.CurrencyCode).HasColumnType("nchar(3)");
@@ -403,7 +403,7 @@ namespace query_tags.Model
                     entity.ToTable("CurrencyRate", "Sales");
 
                     entity.HasIndex(e => new {e.CurrencyRateDate, e.FromCurrencyCode, e.ToCurrencyCode})
-                        .HasName("AK_CurrencyRate_CurrencyRateDate_FromCurrencyCode_ToCurrencyCode")
+                        .HasDatabaseName("AK_CurrencyRate_CurrencyRateDate_FromCurrencyCode_ToCurrencyCode")
                         .IsUnique();
 
                     entity.Property(e => e.AverageRate).HasColumnType("money");
@@ -441,14 +441,14 @@ namespace query_tags.Model
                     entity.ToTable("Customer", "Sales");
 
                     entity.HasIndex(e => e.AccountNumber)
-                        .HasName("AK_Customer_AccountNumber")
+                        .HasDatabaseName("AK_Customer_AccountNumber")
                         .IsUnique();
 
                     entity.HasIndex(e => e.TerritoryID)
-                        .HasName("IX_Customer_TerritoryID");
+                        .HasDatabaseName("IX_Customer_TerritoryID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Customer_rowguid")
+                        .HasDatabaseName("AK_Customer_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.AccountNumber)
@@ -505,7 +505,7 @@ namespace query_tags.Model
                     entity.ToTable("Department", "HumanResources");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Department_Name")
+                        .HasDatabaseName("AK_Department_Name")
                         .IsUnique();
 
                     entity.Property(e => e.GroupName)
@@ -530,7 +530,7 @@ namespace query_tags.Model
                     entity.ToTable("EmailAddress", "Person");
 
                     entity.HasIndex(e => e.EmailAddress1)
-                        .HasName("IX_EmailAddress_EmailAddress");
+                        .HasDatabaseName("IX_EmailAddress_EmailAddress");
 
                     entity.Property(e => e.EmailAddressID).ValueGeneratedOnAdd();
 
@@ -559,15 +559,15 @@ namespace query_tags.Model
                     entity.ToTable("Employee", "HumanResources");
 
                     entity.HasIndex(e => e.LoginID)
-                        .HasName("AK_Employee_LoginID")
+                        .HasDatabaseName("AK_Employee_LoginID")
                         .IsUnique();
 
                     entity.HasIndex(e => e.NationalIDNumber)
-                        .HasName("AK_Employee_NationalIDNumber")
+                        .HasDatabaseName("AK_Employee_NationalIDNumber")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Employee_rowguid")
+                        .HasDatabaseName("AK_Employee_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.BusinessEntityID).ValueGeneratedNever();
@@ -631,10 +631,10 @@ namespace query_tags.Model
                     entity.ToTable("EmployeeDepartmentHistory", "HumanResources");
 
                     entity.HasIndex(e => e.DepartmentID)
-                        .HasName("IX_EmployeeDepartmentHistory_DepartmentID");
+                        .HasDatabaseName("IX_EmployeeDepartmentHistory_DepartmentID");
 
                     entity.HasIndex(e => e.ShiftID)
-                        .HasName("IX_EmployeeDepartmentHistory_ShiftID");
+                        .HasDatabaseName("IX_EmployeeDepartmentHistory_ShiftID");
 
                     entity.Property(e => e.StartDate).HasColumnType("date");
 
@@ -716,7 +716,7 @@ namespace query_tags.Model
                     entity.ToTable("JobCandidate", "HumanResources");
 
                     entity.HasIndex(e => e.BusinessEntityID)
-                        .HasName("IX_JobCandidate_BusinessEntityID");
+                        .HasDatabaseName("IX_JobCandidate_BusinessEntityID");
 
                     entity.Property(e => e.ModifiedDate)
                         .HasColumnType("datetime")
@@ -735,7 +735,7 @@ namespace query_tags.Model
                     entity.ToTable("Location", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Location_Name")
+                        .HasDatabaseName("AK_Location_Name")
                         .IsUnique();
 
                     entity.Property(e => e.Availability)
@@ -794,17 +794,17 @@ namespace query_tags.Model
                     entity.ToTable("Person", "Person");
 
                     entity.HasIndex(e => e.AdditionalContactInfo)
-                        .HasName("PXML_Person_AddContact");
+                        .HasDatabaseName("PXML_Person_AddContact");
 
                     entity.HasIndex(e => e.Demographics)
-                        .HasName("XMLVALUE_Person_Demographics");
+                        .HasDatabaseName("XMLVALUE_Person_Demographics");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Person_rowguid")
+                        .HasDatabaseName("AK_Person_rowguid")
                         .IsUnique();
 
                     entity.HasIndex(e => new {e.LastName, e.FirstName, e.MiddleName})
-                        .HasName("IX_Person_LastName_FirstName_MiddleName");
+                        .HasDatabaseName("IX_Person_LastName_FirstName_MiddleName");
 
                     entity.Property(e => e.BusinessEntityID).ValueGeneratedNever();
 
@@ -880,7 +880,7 @@ namespace query_tags.Model
                     entity.ToTable("PersonPhone", "Person");
 
                     entity.HasIndex(e => e.PhoneNumber)
-                        .HasName("IX_PersonPhone_PhoneNumber");
+                        .HasDatabaseName("IX_PersonPhone_PhoneNumber");
 
                     entity.Property(e => e.PhoneNumber).HasColumnType("Phone");
 
@@ -919,15 +919,15 @@ namespace query_tags.Model
                     entity.ToTable("Product", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Product_Name")
+                        .HasDatabaseName("AK_Product_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.ProductNumber)
-                        .HasName("AK_Product_ProductNumber")
+                        .HasDatabaseName("AK_Product_ProductNumber")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Product_rowguid")
+                        .HasDatabaseName("AK_Product_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.Class).HasColumnType("nchar(2)");
@@ -1001,11 +1001,11 @@ namespace query_tags.Model
                     entity.ToTable("ProductCategory", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ProductCategory_Name")
+                        .HasDatabaseName("AK_ProductCategory_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_ProductCategory_rowguid")
+                        .HasDatabaseName("AK_ProductCategory_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1049,7 +1049,7 @@ namespace query_tags.Model
                     entity.ToTable("ProductDescription", "Production");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_ProductDescription_rowguid")
+                        .HasDatabaseName("AK_ProductDescription_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.Description)
@@ -1124,17 +1124,17 @@ namespace query_tags.Model
                     entity.ToTable("ProductModel", "Production");
 
                     entity.HasIndex(e => e.CatalogDescription)
-                        .HasName("PXML_ProductModel_CatalogDescription");
+                        .HasDatabaseName("PXML_ProductModel_CatalogDescription");
 
                     entity.HasIndex(e => e.Instructions)
-                        .HasName("PXML_ProductModel_Instructions");
+                        .HasDatabaseName("PXML_ProductModel_Instructions");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ProductModel_Name")
+                        .HasDatabaseName("AK_ProductModel_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_ProductModel_rowguid")
+                        .HasDatabaseName("AK_ProductModel_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.CatalogDescription).HasColumnType("xml");
@@ -1253,7 +1253,7 @@ namespace query_tags.Model
                     entity.ToTable("ProductReview", "Production");
 
                     entity.HasIndex(e => new {e.Comments, e.ProductID, e.ReviewerName})
-                        .HasName("IX_ProductReview_ProductID_Name");
+                        .HasDatabaseName("IX_ProductReview_ProductID_Name");
 
                     entity.Property(e => e.Comments).HasMaxLength(3850);
 
@@ -1285,11 +1285,11 @@ namespace query_tags.Model
                     entity.ToTable("ProductSubcategory", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ProductSubcategory_Name")
+                        .HasDatabaseName("AK_ProductSubcategory_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_ProductSubcategory_rowguid")
+                        .HasDatabaseName("AK_ProductSubcategory_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1317,10 +1317,10 @@ namespace query_tags.Model
                     entity.ToTable("ProductVendor", "Purchasing");
 
                     entity.HasIndex(e => e.BusinessEntityID)
-                        .HasName("IX_ProductVendor_BusinessEntityID");
+                        .HasDatabaseName("IX_ProductVendor_BusinessEntityID");
 
                     entity.HasIndex(e => e.UnitMeasureCode)
-                        .HasName("IX_ProductVendor_UnitMeasureCode");
+                        .HasDatabaseName("IX_ProductVendor_UnitMeasureCode");
 
                     entity.Property(e => e.LastReceiptCost).HasColumnType("money");
 
@@ -1361,7 +1361,7 @@ namespace query_tags.Model
                     entity.ToTable("PurchaseOrderDetail", "Purchasing");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_PurchaseOrderDetail_ProductID");
+                        .HasDatabaseName("IX_PurchaseOrderDetail_ProductID");
 
                     entity.Property(e => e.PurchaseOrderDetailID).ValueGeneratedOnAdd();
 
@@ -1405,10 +1405,10 @@ namespace query_tags.Model
                     entity.ToTable("PurchaseOrderHeader", "Purchasing");
 
                     entity.HasIndex(e => e.EmployeeID)
-                        .HasName("IX_PurchaseOrderHeader_EmployeeID");
+                        .HasDatabaseName("IX_PurchaseOrderHeader_EmployeeID");
 
                     entity.HasIndex(e => e.VendorID)
-                        .HasName("IX_PurchaseOrderHeader_VendorID");
+                        .HasDatabaseName("IX_PurchaseOrderHeader_VendorID");
 
                     entity.Property(e => e.Freight)
                         .HasColumnType("money")
@@ -1465,10 +1465,10 @@ namespace query_tags.Model
                     entity.ToTable("SalesOrderDetail", "Sales");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_SalesOrderDetail_ProductID");
+                        .HasDatabaseName("IX_SalesOrderDetail_ProductID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesOrderDetail_rowguid")
+                        .HasDatabaseName("AK_SalesOrderDetail_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.SalesOrderDetailID).ValueGeneratedOnAdd();
@@ -1511,17 +1511,17 @@ namespace query_tags.Model
                     entity.ToTable("SalesOrderHeader", "Sales");
 
                     entity.HasIndex(e => e.CustomerID)
-                        .HasName("IX_SalesOrderHeader_CustomerID");
+                        .HasDatabaseName("IX_SalesOrderHeader_CustomerID");
 
                     entity.HasIndex(e => e.SalesOrderNumber)
-                        .HasName("AK_SalesOrderHeader_SalesOrderNumber")
+                        .HasDatabaseName("AK_SalesOrderHeader_SalesOrderNumber")
                         .IsUnique();
 
                     entity.HasIndex(e => e.SalesPersonID)
-                        .HasName("IX_SalesOrderHeader_SalesPersonID");
+                        .HasDatabaseName("IX_SalesOrderHeader_SalesPersonID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesOrderHeader_rowguid")
+                        .HasDatabaseName("AK_SalesOrderHeader_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.AccountNumber).HasColumnType("AccountNumber");
@@ -1643,7 +1643,7 @@ namespace query_tags.Model
                     entity.ToTable("SalesPerson", "Sales");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesPerson_rowguid")
+                        .HasDatabaseName("AK_SalesPerson_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.BusinessEntityID).ValueGeneratedNever();
@@ -1691,7 +1691,7 @@ namespace query_tags.Model
                     entity.ToTable("SalesPersonQuotaHistory", "Sales");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesPersonQuotaHistory_rowguid")
+                        .HasDatabaseName("AK_SalesPersonQuotaHistory_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.QuotaDate).HasColumnType("datetime");
@@ -1734,11 +1734,11 @@ namespace query_tags.Model
                     entity.ToTable("SalesTaxRate", "Sales");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesTaxRate_rowguid")
+                        .HasDatabaseName("AK_SalesTaxRate_rowguid")
                         .IsUnique();
 
                     entity.HasIndex(e => new {e.StateProvinceID, e.TaxType})
-                        .HasName("AK_SalesTaxRate_StateProvinceID_TaxType")
+                        .HasDatabaseName("AK_SalesTaxRate_StateProvinceID_TaxType")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1770,11 +1770,11 @@ namespace query_tags.Model
                     entity.ToTable("SalesTerritory", "Sales");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_SalesTerritory_Name")
+                        .HasDatabaseName("AK_SalesTerritory_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesTerritory_rowguid")
+                        .HasDatabaseName("AK_SalesTerritory_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.CostLastYear)
@@ -1826,7 +1826,7 @@ namespace query_tags.Model
                     entity.ToTable("SalesTerritoryHistory", "Sales");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SalesTerritoryHistory_rowguid")
+                        .HasDatabaseName("AK_SalesTerritoryHistory_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.StartDate).HasColumnType("datetime");
@@ -1856,7 +1856,7 @@ namespace query_tags.Model
                     entity.ToTable("ScrapReason", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ScrapReason_Name")
+                        .HasDatabaseName("AK_ScrapReason_Name")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1874,11 +1874,11 @@ namespace query_tags.Model
                     entity.ToTable("Shift", "HumanResources");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_Shift_Name")
+                        .HasDatabaseName("AK_Shift_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => new {e.StartTime, e.EndTime})
-                        .HasName("AK_Shift_StartTime_EndTime")
+                        .HasDatabaseName("AK_Shift_StartTime_EndTime")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1896,11 +1896,11 @@ namespace query_tags.Model
                     entity.ToTable("ShipMethod", "Purchasing");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_ShipMethod_Name")
+                        .HasDatabaseName("AK_ShipMethod_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_ShipMethod_rowguid")
+                        .HasDatabaseName("AK_ShipMethod_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -1928,7 +1928,7 @@ namespace query_tags.Model
                     entity.ToTable("ShoppingCartItem", "Sales");
 
                     entity.HasIndex(e => new {e.ShoppingCartID, e.ProductID})
-                        .HasName("IX_ShoppingCartItem_ShoppingCartID_ProductID");
+                        .HasDatabaseName("IX_ShoppingCartItem_ShoppingCartID_ProductID");
 
                     entity.Property(e => e.DateCreated)
                         .HasColumnType("datetime")
@@ -1956,7 +1956,7 @@ namespace query_tags.Model
                     entity.ToTable("SpecialOffer", "Sales");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SpecialOffer_rowguid")
+                        .HasDatabaseName("AK_SpecialOffer_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.Category)
@@ -1997,10 +1997,10 @@ namespace query_tags.Model
                     entity.ToTable("SpecialOfferProduct", "Sales");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_SpecialOfferProduct_ProductID");
+                        .HasDatabaseName("IX_SpecialOfferProduct_ProductID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_SpecialOfferProduct_rowguid")
+                        .HasDatabaseName("AK_SpecialOfferProduct_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.ModifiedDate)
@@ -2026,15 +2026,15 @@ namespace query_tags.Model
                     entity.ToTable("StateProvince", "Person");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_StateProvince_Name")
+                        .HasDatabaseName("AK_StateProvince_Name")
                         .IsUnique();
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_StateProvince_rowguid")
+                        .HasDatabaseName("AK_StateProvince_rowguid")
                         .IsUnique();
 
                     entity.HasIndex(e => new {e.StateProvinceCode, e.CountryRegionCode})
-                        .HasName("AK_StateProvince_StateProvinceCode_CountryRegionCode")
+                        .HasDatabaseName("AK_StateProvince_StateProvinceCode_CountryRegionCode")
                         .IsUnique();
 
                     entity.Property(e => e.CountryRegionCode)
@@ -2079,13 +2079,13 @@ namespace query_tags.Model
                     entity.ToTable("Store", "Sales");
 
                     entity.HasIndex(e => e.Demographics)
-                        .HasName("PXML_Store_Demographics");
+                        .HasDatabaseName("PXML_Store_Demographics");
 
                     entity.HasIndex(e => e.SalesPersonID)
-                        .HasName("IX_Store_SalesPersonID");
+                        .HasDatabaseName("IX_Store_SalesPersonID");
 
                     entity.HasIndex(e => e.rowguid)
-                        .HasName("AK_Store_rowguid")
+                        .HasDatabaseName("AK_Store_rowguid")
                         .IsUnique();
 
                     entity.Property(e => e.BusinessEntityID).ValueGeneratedNever();
@@ -2121,10 +2121,10 @@ namespace query_tags.Model
                     entity.ToTable("TransactionHistory", "Production");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_TransactionHistory_ProductID");
+                        .HasDatabaseName("IX_TransactionHistory_ProductID");
 
                     entity.HasIndex(e => new {e.ReferenceOrderID, e.ReferenceOrderLineID})
-                        .HasName("IX_TransactionHistory_ReferenceOrderID_ReferenceOrderLineID");
+                        .HasDatabaseName("IX_TransactionHistory_ReferenceOrderID_ReferenceOrderLineID");
 
                     entity.Property(e => e.ActualCost).HasColumnType("money");
 
@@ -2157,10 +2157,10 @@ namespace query_tags.Model
                     entity.ToTable("TransactionHistoryArchive", "Production");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_TransactionHistoryArchive_ProductID");
+                        .HasDatabaseName("IX_TransactionHistoryArchive_ProductID");
 
                     entity.HasIndex(e => new {e.ReferenceOrderID, e.ReferenceOrderLineID})
-                        .HasName("IX_TransactionHistoryArchive_ReferenceOrderID_ReferenceOrderLineID");
+                        .HasDatabaseName("IX_TransactionHistoryArchive_ReferenceOrderID_ReferenceOrderLineID");
 
                     entity.Property(e => e.TransactionID).ValueGeneratedNever();
 
@@ -2190,7 +2190,7 @@ namespace query_tags.Model
                     entity.ToTable("UnitMeasure", "Production");
 
                     entity.HasIndex(e => e.Name)
-                        .HasName("AK_UnitMeasure_Name")
+                        .HasDatabaseName("AK_UnitMeasure_Name")
                         .IsUnique();
 
                     entity.Property(e => e.UnitMeasureCode).HasColumnType("nchar(3)");
@@ -2213,7 +2213,7 @@ namespace query_tags.Model
                     entity.ToTable("Vendor", "Purchasing");
 
                     entity.HasIndex(e => e.AccountNumber)
-                        .HasName("AK_Vendor_AccountNumber")
+                        .HasDatabaseName("AK_Vendor_AccountNumber")
                         .IsUnique();
 
                     entity.Property(e => e.BusinessEntityID).ValueGeneratedNever();
@@ -2252,10 +2252,10 @@ namespace query_tags.Model
                     entity.ToTable("WorkOrder", "Production");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_WorkOrder_ProductID");
+                        .HasDatabaseName("IX_WorkOrder_ProductID");
 
                     entity.HasIndex(e => e.ScrapReasonID)
-                        .HasName("IX_WorkOrder_ScrapReasonID");
+                        .HasDatabaseName("IX_WorkOrder_ScrapReasonID");
 
                     entity.Property(e => e.DueDate).HasColumnType("datetime");
 
@@ -2288,7 +2288,7 @@ namespace query_tags.Model
                     entity.ToTable("WorkOrderRouting", "Production");
 
                     entity.HasIndex(e => e.ProductID)
-                        .HasName("IX_WorkOrderRouting_ProductID");
+                        .HasDatabaseName("IX_WorkOrderRouting_ProductID");
 
                     entity.Property(e => e.ActualCost).HasColumnType("money");
 

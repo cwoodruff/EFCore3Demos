@@ -65,7 +65,7 @@ namespace spatial.Models
                 entity.ToTable("BuyingGroups", "Sales");
 
                 entity.HasIndex(e => e.BuyingGroupName)
-                    .HasName("UQ_Sales_BuyingGroups_BuyingGroupName")
+                    .HasDatabaseName("UQ_Sales_BuyingGroups_BuyingGroupName")
                     .IsUnique();
 
                 entity.Property(e => e.BuyingGroupId)
@@ -91,7 +91,7 @@ namespace spatial.Models
                 entity.ToTable("Cities", "Application");
 
                 entity.HasIndex(e => e.StateProvinceId)
-                    .HasName("FK_Application_Cities_StateProvinceID");
+                    .HasDatabaseName("FK_Application_Cities_StateProvinceID");
 
                 entity.Property(e => e.CityId)
                     .HasColumnName("CityID")
@@ -124,7 +124,7 @@ namespace spatial.Models
                 entity.ToTable("ColdRoomTemperatures", "Warehouse");
 
                 entity.HasIndex(e => e.ColdRoomSensorNumber)
-                    .HasName("IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber");
+                    .HasDatabaseName("IX_Warehouse_ColdRoomTemperatures_ColdRoomSensorNumber");
 
                 entity.Property(e => e.ColdRoomTemperatureId).HasColumnName("ColdRoomTemperatureID");
 
@@ -139,7 +139,7 @@ namespace spatial.Models
                 entity.ToTable("Colors", "Warehouse");
 
                 entity.HasIndex(e => e.ColorName)
-                    .HasName("UQ_Warehouse_Colors_ColorName")
+                    .HasDatabaseName("UQ_Warehouse_Colors_ColorName")
                     .IsUnique();
 
                 entity.Property(e => e.ColorId)
@@ -165,11 +165,11 @@ namespace spatial.Models
                 entity.ToTable("Countries", "Application");
 
                 entity.HasIndex(e => e.CountryName)
-                    .HasName("UQ_Application_Countries_CountryName")
+                    .HasDatabaseName("UQ_Application_Countries_CountryName")
                     .IsUnique();
 
                 entity.HasIndex(e => e.FormalName)
-                    .HasName("UQ_Application_Countries_FormalName")
+                    .HasDatabaseName("UQ_Application_Countries_FormalName")
                     .IsUnique();
 
                 entity.Property(e => e.CountryId)
@@ -215,7 +215,7 @@ namespace spatial.Models
                 entity.ToTable("CustomerCategories", "Sales");
 
                 entity.HasIndex(e => e.CustomerCategoryName)
-                    .HasName("UQ_Sales_CustomerCategories_CustomerCategoryName")
+                    .HasDatabaseName("UQ_Sales_CustomerCategories_CustomerCategoryName")
                     .IsUnique();
 
                 entity.Property(e => e.CustomerCategoryId)
@@ -241,19 +241,19 @@ namespace spatial.Models
                 entity.ToTable("CustomerTransactions", "Sales");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("FK_Sales_CustomerTransactions_CustomerID");
+                    .HasDatabaseName("FK_Sales_CustomerTransactions_CustomerID");
 
                 entity.HasIndex(e => e.InvoiceId)
-                    .HasName("FK_Sales_CustomerTransactions_InvoiceID");
+                    .HasDatabaseName("FK_Sales_CustomerTransactions_InvoiceID");
 
                 entity.HasIndex(e => e.IsFinalized)
-                    .HasName("IX_Sales_CustomerTransactions_IsFinalized");
+                    .HasDatabaseName("IX_Sales_CustomerTransactions_IsFinalized");
 
                 entity.HasIndex(e => e.PaymentMethodId)
-                    .HasName("FK_Sales_CustomerTransactions_PaymentMethodID");
+                    .HasDatabaseName("FK_Sales_CustomerTransactions_PaymentMethodID");
 
                 entity.HasIndex(e => e.TransactionTypeId)
-                    .HasName("FK_Sales_CustomerTransactions_TransactionTypeID");
+                    .HasDatabaseName("FK_Sales_CustomerTransactions_TransactionTypeID");
 
                 entity.Property(e => e.CustomerTransactionId)
                     .HasColumnName("CustomerTransactionID")
@@ -321,32 +321,32 @@ namespace spatial.Models
                 entity.ToTable("Customers", "Sales");
 
                 entity.HasIndex(e => e.AlternateContactPersonId)
-                    .HasName("FK_Sales_Customers_AlternateContactPersonID");
+                    .HasDatabaseName("FK_Sales_Customers_AlternateContactPersonID");
 
                 entity.HasIndex(e => e.BuyingGroupId)
-                    .HasName("FK_Sales_Customers_BuyingGroupID");
+                    .HasDatabaseName("FK_Sales_Customers_BuyingGroupID");
 
                 entity.HasIndex(e => e.CustomerCategoryId)
-                    .HasName("FK_Sales_Customers_CustomerCategoryID");
+                    .HasDatabaseName("FK_Sales_Customers_CustomerCategoryID");
 
                 entity.HasIndex(e => e.CustomerName)
-                    .HasName("UQ_Sales_Customers_CustomerName")
+                    .HasDatabaseName("UQ_Sales_Customers_CustomerName")
                     .IsUnique();
 
                 entity.HasIndex(e => e.DeliveryCityId)
-                    .HasName("FK_Sales_Customers_DeliveryCityID");
+                    .HasDatabaseName("FK_Sales_Customers_DeliveryCityID");
 
                 entity.HasIndex(e => e.DeliveryMethodId)
-                    .HasName("FK_Sales_Customers_DeliveryMethodID");
+                    .HasDatabaseName("FK_Sales_Customers_DeliveryMethodID");
 
                 entity.HasIndex(e => e.PostalCityId)
-                    .HasName("FK_Sales_Customers_PostalCityID");
+                    .HasDatabaseName("FK_Sales_Customers_PostalCityID");
 
                 entity.HasIndex(e => e.PrimaryContactPersonId)
-                    .HasName("FK_Sales_Customers_PrimaryContactPersonID");
+                    .HasDatabaseName("FK_Sales_Customers_PrimaryContactPersonID");
 
                 entity.HasIndex(e => new {e.PrimaryContactPersonId, e.IsOnCreditHold, e.CustomerId, e.BillToCustomerId})
-                    .HasName("IX_Sales_Customers_Perf_20160301_06");
+                    .HasDatabaseName("IX_Sales_Customers_Perf_20160301_06");
 
                 entity.Property(e => e.CustomerId)
                     .HasColumnName("CustomerID")
@@ -476,7 +476,7 @@ namespace spatial.Models
                 entity.ToTable("DeliveryMethods", "Application");
 
                 entity.HasIndex(e => e.DeliveryMethodName)
-                    .HasName("UQ_Application_DeliveryMethods_DeliveryMethodName")
+                    .HasDatabaseName("UQ_Application_DeliveryMethods_DeliveryMethodName")
                     .IsUnique();
 
                 entity.Property(e => e.DeliveryMethodId)
@@ -502,13 +502,13 @@ namespace spatial.Models
                 entity.ToTable("InvoiceLines", "Sales");
 
                 entity.HasIndex(e => e.InvoiceId)
-                    .HasName("FK_Sales_InvoiceLines_InvoiceID");
+                    .HasDatabaseName("FK_Sales_InvoiceLines_InvoiceID");
 
                 entity.HasIndex(e => e.PackageTypeId)
-                    .HasName("FK_Sales_InvoiceLines_PackageTypeID");
+                    .HasDatabaseName("FK_Sales_InvoiceLines_PackageTypeID");
 
                 entity.HasIndex(e => e.StockItemId)
-                    .HasName("FK_Sales_InvoiceLines_StockItemID");
+                    .HasDatabaseName("FK_Sales_InvoiceLines_StockItemID");
 
                 entity.Property(e => e.InvoiceLineId)
                     .HasColumnName("InvoiceLineID")
@@ -569,31 +569,31 @@ namespace spatial.Models
                 entity.ToTable("Invoices", "Sales");
 
                 entity.HasIndex(e => e.AccountsPersonId)
-                    .HasName("FK_Sales_Invoices_AccountsPersonID");
+                    .HasDatabaseName("FK_Sales_Invoices_AccountsPersonID");
 
                 entity.HasIndex(e => e.BillToCustomerId)
-                    .HasName("FK_Sales_Invoices_BillToCustomerID");
+                    .HasDatabaseName("FK_Sales_Invoices_BillToCustomerID");
 
                 entity.HasIndex(e => e.ContactPersonId)
-                    .HasName("FK_Sales_Invoices_ContactPersonID");
+                    .HasDatabaseName("FK_Sales_Invoices_ContactPersonID");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("FK_Sales_Invoices_CustomerID");
+                    .HasDatabaseName("FK_Sales_Invoices_CustomerID");
 
                 entity.HasIndex(e => e.DeliveryMethodId)
-                    .HasName("FK_Sales_Invoices_DeliveryMethodID");
+                    .HasDatabaseName("FK_Sales_Invoices_DeliveryMethodID");
 
                 entity.HasIndex(e => e.OrderId)
-                    .HasName("FK_Sales_Invoices_OrderID");
+                    .HasDatabaseName("FK_Sales_Invoices_OrderID");
 
                 entity.HasIndex(e => e.PackedByPersonId)
-                    .HasName("FK_Sales_Invoices_PackedByPersonID");
+                    .HasDatabaseName("FK_Sales_Invoices_PackedByPersonID");
 
                 entity.HasIndex(e => e.SalespersonPersonId)
-                    .HasName("FK_Sales_Invoices_SalespersonPersonID");
+                    .HasDatabaseName("FK_Sales_Invoices_SalespersonPersonID");
 
                 entity.HasIndex(e => new {e.ConfirmedReceivedBy, e.ConfirmedDeliveryTime})
-                    .HasName("IX_Sales_Invoices_ConfirmedDeliveryTime");
+                    .HasDatabaseName("IX_Sales_Invoices_ConfirmedDeliveryTime");
 
                 entity.Property(e => e.InvoiceId)
                     .HasColumnName("InvoiceID")
@@ -694,19 +694,19 @@ namespace spatial.Models
                 entity.ToTable("OrderLines", "Sales");
 
                 entity.HasIndex(e => e.OrderId)
-                    .HasName("FK_Sales_OrderLines_OrderID");
+                    .HasDatabaseName("FK_Sales_OrderLines_OrderID");
 
                 entity.HasIndex(e => e.PackageTypeId)
-                    .HasName("FK_Sales_OrderLines_PackageTypeID");
+                    .HasDatabaseName("FK_Sales_OrderLines_PackageTypeID");
 
                 entity.HasIndex(e => new {e.PickedQuantity, e.StockItemId})
-                    .HasName("IX_Sales_OrderLines_AllocatedStockItems");
+                    .HasDatabaseName("IX_Sales_OrderLines_AllocatedStockItems");
 
                 entity.HasIndex(e => new {e.OrderId, e.PickedQuantity, e.StockItemId, e.PickingCompletedWhen})
-                    .HasName("IX_Sales_OrderLines_Perf_20160301_02");
+                    .HasDatabaseName("IX_Sales_OrderLines_Perf_20160301_02");
 
                 entity.HasIndex(e => new {e.Quantity, e.StockItemId, e.PickingCompletedWhen, e.OrderId, e.OrderLineId})
-                    .HasName("IX_Sales_OrderLines_Perf_20160301_01");
+                    .HasDatabaseName("IX_Sales_OrderLines_Perf_20160301_01");
 
                 entity.Property(e => e.OrderLineId)
                     .HasColumnName("OrderLineID")
@@ -761,16 +761,16 @@ namespace spatial.Models
                 entity.ToTable("Orders", "Sales");
 
                 entity.HasIndex(e => e.ContactPersonId)
-                    .HasName("FK_Sales_Orders_ContactPersonID");
+                    .HasDatabaseName("FK_Sales_Orders_ContactPersonID");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("FK_Sales_Orders_CustomerID");
+                    .HasDatabaseName("FK_Sales_Orders_CustomerID");
 
                 entity.HasIndex(e => e.PickedByPersonId)
-                    .HasName("FK_Sales_Orders_PickedByPersonID");
+                    .HasDatabaseName("FK_Sales_Orders_PickedByPersonID");
 
                 entity.HasIndex(e => e.SalespersonPersonId)
-                    .HasName("FK_Sales_Orders_SalespersonPersonID");
+                    .HasDatabaseName("FK_Sales_Orders_SalespersonPersonID");
 
                 entity.Property(e => e.OrderId)
                     .HasColumnName("OrderID")
@@ -837,7 +837,7 @@ namespace spatial.Models
                 entity.ToTable("PackageTypes", "Warehouse");
 
                 entity.HasIndex(e => e.PackageTypeName)
-                    .HasName("UQ_Warehouse_PackageTypes_PackageTypeName")
+                    .HasDatabaseName("UQ_Warehouse_PackageTypes_PackageTypeName")
                     .IsUnique();
 
                 entity.Property(e => e.PackageTypeId)
@@ -863,7 +863,7 @@ namespace spatial.Models
                 entity.ToTable("PaymentMethods", "Application");
 
                 entity.HasIndex(e => e.PaymentMethodName)
-                    .HasName("UQ_Application_PaymentMethods_PaymentMethodName")
+                    .HasDatabaseName("UQ_Application_PaymentMethods_PaymentMethodName")
                     .IsUnique();
 
                 entity.Property(e => e.PaymentMethodId)
@@ -889,16 +889,16 @@ namespace spatial.Models
                 entity.ToTable("People", "Application");
 
                 entity.HasIndex(e => e.FullName)
-                    .HasName("IX_Application_People_FullName");
+                    .HasDatabaseName("IX_Application_People_FullName");
 
                 entity.HasIndex(e => e.IsEmployee)
-                    .HasName("IX_Application_People_IsEmployee");
+                    .HasDatabaseName("IX_Application_People_IsEmployee");
 
                 entity.HasIndex(e => e.IsSalesperson)
-                    .HasName("IX_Application_People_IsSalesperson");
+                    .HasDatabaseName("IX_Application_People_IsSalesperson");
 
                 entity.HasIndex(e => new {e.FullName, e.EmailAddress, e.IsPermittedToLogon, e.PersonId})
-                    .HasName("IX_Application_People_Perf_20160301_05");
+                    .HasDatabaseName("IX_Application_People_Perf_20160301_05");
 
                 entity.Property(e => e.PersonId)
                     .HasColumnName("PersonID")
@@ -943,16 +943,16 @@ namespace spatial.Models
                 entity.ToTable("PurchaseOrderLines", "Purchasing");
 
                 entity.HasIndex(e => e.PackageTypeId)
-                    .HasName("FK_Purchasing_PurchaseOrderLines_PackageTypeID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrderLines_PackageTypeID");
 
                 entity.HasIndex(e => e.PurchaseOrderId)
-                    .HasName("FK_Purchasing_PurchaseOrderLines_PurchaseOrderID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrderLines_PurchaseOrderID");
 
                 entity.HasIndex(e => e.StockItemId)
-                    .HasName("FK_Purchasing_PurchaseOrderLines_StockItemID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrderLines_StockItemID");
 
                 entity.HasIndex(e => new {e.OrderedOuters, e.ReceivedOuters, e.IsOrderLineFinalized, e.StockItemId})
-                    .HasName("IX_Purchasing_PurchaseOrderLines_Perf_20160301_4");
+                    .HasDatabaseName("IX_Purchasing_PurchaseOrderLines_Perf_20160301_4");
 
                 entity.Property(e => e.PurchaseOrderLineId)
                     .HasColumnName("PurchaseOrderLineID")
@@ -1007,13 +1007,13 @@ namespace spatial.Models
                 entity.ToTable("PurchaseOrders", "Purchasing");
 
                 entity.HasIndex(e => e.ContactPersonId)
-                    .HasName("FK_Purchasing_PurchaseOrders_ContactPersonID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrders_ContactPersonID");
 
                 entity.HasIndex(e => e.DeliveryMethodId)
-                    .HasName("FK_Purchasing_PurchaseOrders_DeliveryMethodID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrders_DeliveryMethodID");
 
                 entity.HasIndex(e => e.SupplierId)
-                    .HasName("FK_Purchasing_PurchaseOrders_SupplierID");
+                    .HasDatabaseName("FK_Purchasing_PurchaseOrders_SupplierID");
 
                 entity.Property(e => e.PurchaseOrderId)
                     .HasColumnName("PurchaseOrderID")
@@ -1066,19 +1066,19 @@ namespace spatial.Models
                 entity.ToTable("SpecialDeals", "Sales");
 
                 entity.HasIndex(e => e.BuyingGroupId)
-                    .HasName("FK_Sales_SpecialDeals_BuyingGroupID");
+                    .HasDatabaseName("FK_Sales_SpecialDeals_BuyingGroupID");
 
                 entity.HasIndex(e => e.CustomerCategoryId)
-                    .HasName("FK_Sales_SpecialDeals_CustomerCategoryID");
+                    .HasDatabaseName("FK_Sales_SpecialDeals_CustomerCategoryID");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("FK_Sales_SpecialDeals_CustomerID");
+                    .HasDatabaseName("FK_Sales_SpecialDeals_CustomerID");
 
                 entity.HasIndex(e => e.StockGroupId)
-                    .HasName("FK_Sales_SpecialDeals_StockGroupID");
+                    .HasDatabaseName("FK_Sales_SpecialDeals_StockGroupID");
 
                 entity.HasIndex(e => e.StockItemId)
-                    .HasName("FK_Sales_SpecialDeals_StockItemID");
+                    .HasDatabaseName("FK_Sales_SpecialDeals_StockItemID");
 
                 entity.Property(e => e.SpecialDealId)
                     .HasColumnName("SpecialDealID")
@@ -1150,13 +1150,13 @@ namespace spatial.Models
                 entity.ToTable("StateProvinces", "Application");
 
                 entity.HasIndex(e => e.CountryId)
-                    .HasName("FK_Application_StateProvinces_CountryID");
+                    .HasDatabaseName("FK_Application_StateProvinces_CountryID");
 
                 entity.HasIndex(e => e.SalesTerritory)
-                    .HasName("IX_Application_StateProvinces_SalesTerritory");
+                    .HasDatabaseName("IX_Application_StateProvinces_SalesTerritory");
 
                 entity.HasIndex(e => e.StateProvinceName)
-                    .HasName("UQ_Application_StateProvinces_StateProvinceName")
+                    .HasDatabaseName("UQ_Application_StateProvinces_StateProvinceName")
                     .IsUnique();
 
                 entity.Property(e => e.StateProvinceId)
@@ -1198,7 +1198,7 @@ namespace spatial.Models
                 entity.ToTable("StockGroups", "Warehouse");
 
                 entity.HasIndex(e => e.StockGroupName)
-                    .HasName("UQ_Warehouse_StockGroups_StockGroupName")
+                    .HasDatabaseName("UQ_Warehouse_StockGroups_StockGroupName")
                     .IsUnique();
 
                 entity.Property(e => e.StockGroupId)
@@ -1256,11 +1256,11 @@ namespace spatial.Models
                 entity.ToTable("StockItemStockGroups", "Warehouse");
 
                 entity.HasIndex(e => new {e.StockGroupId, e.StockItemId})
-                    .HasName("UQ_StockItemStockGroups_StockGroupID_Lookup")
+                    .HasDatabaseName("UQ_StockItemStockGroups_StockGroupID_Lookup")
                     .IsUnique();
 
                 entity.HasIndex(e => new {e.StockItemId, e.StockGroupId})
-                    .HasName("UQ_StockItemStockGroups_StockItemID_Lookup")
+                    .HasDatabaseName("UQ_StockItemStockGroups_StockItemID_Lookup")
                     .IsUnique();
 
                 entity.Property(e => e.StockItemStockGroupId)
@@ -1300,22 +1300,22 @@ namespace spatial.Models
                 entity.ToTable("StockItemTransactions", "Warehouse");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("FK_Warehouse_StockItemTransactions_CustomerID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_CustomerID");
 
                 entity.HasIndex(e => e.InvoiceId)
-                    .HasName("FK_Warehouse_StockItemTransactions_InvoiceID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_InvoiceID");
 
                 entity.HasIndex(e => e.PurchaseOrderId)
-                    .HasName("FK_Warehouse_StockItemTransactions_PurchaseOrderID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_PurchaseOrderID");
 
                 entity.HasIndex(e => e.StockItemId)
-                    .HasName("FK_Warehouse_StockItemTransactions_StockItemID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_StockItemID");
 
                 entity.HasIndex(e => e.SupplierId)
-                    .HasName("FK_Warehouse_StockItemTransactions_SupplierID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_SupplierID");
 
                 entity.HasIndex(e => e.TransactionTypeId)
-                    .HasName("FK_Warehouse_StockItemTransactions_TransactionTypeID");
+                    .HasDatabaseName("FK_Warehouse_StockItemTransactions_TransactionTypeID");
 
                 entity.Property(e => e.StockItemTransactionId)
                     .HasColumnName("StockItemTransactionID")
@@ -1385,20 +1385,20 @@ namespace spatial.Models
                 entity.ToTable("StockItems", "Warehouse");
 
                 entity.HasIndex(e => e.ColorId)
-                    .HasName("FK_Warehouse_StockItems_ColorID");
+                    .HasDatabaseName("FK_Warehouse_StockItems_ColorID");
 
                 entity.HasIndex(e => e.OuterPackageId)
-                    .HasName("FK_Warehouse_StockItems_OuterPackageID");
+                    .HasDatabaseName("FK_Warehouse_StockItems_OuterPackageID");
 
                 entity.HasIndex(e => e.StockItemName)
-                    .HasName("UQ_Warehouse_StockItems_StockItemName")
+                    .HasDatabaseName("UQ_Warehouse_StockItems_StockItemName")
                     .IsUnique();
 
                 entity.HasIndex(e => e.SupplierId)
-                    .HasName("FK_Warehouse_StockItems_SupplierID");
+                    .HasDatabaseName("FK_Warehouse_StockItems_SupplierID");
 
                 entity.HasIndex(e => e.UnitPackageId)
-                    .HasName("FK_Warehouse_StockItems_UnitPackageID");
+                    .HasDatabaseName("FK_Warehouse_StockItems_UnitPackageID");
 
                 entity.Property(e => e.StockItemId)
                     .HasColumnName("StockItemID")
@@ -1474,7 +1474,7 @@ namespace spatial.Models
                 entity.ToTable("SupplierCategories", "Purchasing");
 
                 entity.HasIndex(e => e.SupplierCategoryName)
-                    .HasName("UQ_Purchasing_SupplierCategories_SupplierCategoryName")
+                    .HasDatabaseName("UQ_Purchasing_SupplierCategories_SupplierCategoryName")
                     .IsUnique();
 
                 entity.Property(e => e.SupplierCategoryId)
@@ -1500,19 +1500,19 @@ namespace spatial.Models
                 entity.ToTable("SupplierTransactions", "Purchasing");
 
                 entity.HasIndex(e => e.IsFinalized)
-                    .HasName("IX_Purchasing_SupplierTransactions_IsFinalized");
+                    .HasDatabaseName("IX_Purchasing_SupplierTransactions_IsFinalized");
 
                 entity.HasIndex(e => e.PaymentMethodId)
-                    .HasName("FK_Purchasing_SupplierTransactions_PaymentMethodID");
+                    .HasDatabaseName("FK_Purchasing_SupplierTransactions_PaymentMethodID");
 
                 entity.HasIndex(e => e.PurchaseOrderId)
-                    .HasName("FK_Purchasing_SupplierTransactions_PurchaseOrderID");
+                    .HasDatabaseName("FK_Purchasing_SupplierTransactions_PurchaseOrderID");
 
                 entity.HasIndex(e => e.SupplierId)
-                    .HasName("FK_Purchasing_SupplierTransactions_SupplierID");
+                    .HasDatabaseName("FK_Purchasing_SupplierTransactions_SupplierID");
 
                 entity.HasIndex(e => e.TransactionTypeId)
-                    .HasName("FK_Purchasing_SupplierTransactions_TransactionTypeID");
+                    .HasDatabaseName("FK_Purchasing_SupplierTransactions_TransactionTypeID");
 
                 entity.Property(e => e.SupplierTransactionId)
                     .HasColumnName("SupplierTransactionID")
@@ -1583,25 +1583,25 @@ namespace spatial.Models
                 entity.ToTable("Suppliers", "Purchasing");
 
                 entity.HasIndex(e => e.AlternateContactPersonId)
-                    .HasName("FK_Purchasing_Suppliers_AlternateContactPersonID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_AlternateContactPersonID");
 
                 entity.HasIndex(e => e.DeliveryCityId)
-                    .HasName("FK_Purchasing_Suppliers_DeliveryCityID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_DeliveryCityID");
 
                 entity.HasIndex(e => e.DeliveryMethodId)
-                    .HasName("FK_Purchasing_Suppliers_DeliveryMethodID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_DeliveryMethodID");
 
                 entity.HasIndex(e => e.PostalCityId)
-                    .HasName("FK_Purchasing_Suppliers_PostalCityID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_PostalCityID");
 
                 entity.HasIndex(e => e.PrimaryContactPersonId)
-                    .HasName("FK_Purchasing_Suppliers_PrimaryContactPersonID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_PrimaryContactPersonID");
 
                 entity.HasIndex(e => e.SupplierCategoryId)
-                    .HasName("FK_Purchasing_Suppliers_SupplierCategoryID");
+                    .HasDatabaseName("FK_Purchasing_Suppliers_SupplierCategoryID");
 
                 entity.HasIndex(e => e.SupplierName)
-                    .HasName("UQ_Purchasing_Suppliers_SupplierName")
+                    .HasDatabaseName("UQ_Purchasing_Suppliers_SupplierName")
                     .IsUnique();
 
                 entity.Property(e => e.SupplierId)
@@ -1719,10 +1719,10 @@ namespace spatial.Models
                 entity.ToTable("SystemParameters", "Application");
 
                 entity.HasIndex(e => e.DeliveryCityId)
-                    .HasName("FK_Application_SystemParameters_DeliveryCityID");
+                    .HasDatabaseName("FK_Application_SystemParameters_DeliveryCityID");
 
                 entity.HasIndex(e => e.PostalCityId)
-                    .HasName("FK_Application_SystemParameters_PostalCityID");
+                    .HasDatabaseName("FK_Application_SystemParameters_PostalCityID");
 
                 entity.Property(e => e.SystemParameterId)
                     .HasColumnName("SystemParameterID")
@@ -1783,7 +1783,7 @@ namespace spatial.Models
                 entity.ToTable("TransactionTypes", "Application");
 
                 entity.HasIndex(e => e.TransactionTypeName)
-                    .HasName("UQ_Application_TransactionTypes_TransactionTypeName")
+                    .HasDatabaseName("UQ_Application_TransactionTypes_TransactionTypeName")
                     .IsUnique();
 
                 entity.Property(e => e.TransactionTypeId)
